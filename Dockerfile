@@ -10,7 +10,7 @@ RUN echo "@commuedge https://nl.alpinelinux.org/alpine/edge/community" >> /etc/a
     ffmpeg \
     openjdk8-jre@commuedge \
     tini@commuedge \
- && wget -qO- http://madsonic.org/download/61/20160727_madsonic-6.1.8550-standalone.tar.gz | tar zxf - \
+ && wget -qO- http://madsonic.org/download/6.1/20160727_madsonic-6.1.8550-standalone.tar.gz | tar zxf - \
  && rm -f /var/cache/apk/*
 
 COPY start.sh /usr/local/bin/start.sh
