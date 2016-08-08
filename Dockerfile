@@ -17,7 +17,7 @@ RUN echo "@commuedge https://nl.alpinelinux.org/alpine/edge/community" >> /etc/a
     ffmpeg \
     openjdk8-jre@commuedge \
     tini@commuedge \
- && wget -qO- http://madsonic.org/download/${PKG_VER}/${TAR_NAME} | tar zxf - \
+ && wget -qO- "http://madsonic.org/download/${PKG_VER}/${TAR_NAME}" | tar zxf - \
  && rm -f /var/cache/apk/*
 
 COPY start.sh /usr/local/bin/start.sh
