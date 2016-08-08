@@ -1,13 +1,6 @@
 FROM alpine:edge
 MAINTAINER madsonic <support@madsonic.org>
 
-# Madsonic Package Information
-ENV PKG_NAME madsonic
-ENV PKG_VER 6.1
-ENV PKG_BUILD 8550
-ENV PKG_DATE 20160727
-ENV TAR_NAME ${PKG_DATE}_${PKG_NAME}-${PKG_VER}.${PKG_BUILD}.tar.gz
-
 ENV GID=991 UID=991
 
 WORKDIR /madsonic
@@ -17,7 +10,7 @@ RUN echo "@commuedge https://nl.alpinelinux.org/alpine/edge/community" >> /etc/a
     ffmpeg \
     openjdk8-jre@commuedge \
     tini@commuedge \
- && wget -qO- "http://madsonic.org/download/${PKG_VER}/${TAR_NAME}" | tar zxf - \
+ && wget -qO- http://madsonic.org/download/61/20160727_madsonic-6.1.8550-standalone.tar.gz | tar zxf - \
  && rm -f /var/cache/apk/*
 
 COPY start.sh /usr/local/bin/start.sh
