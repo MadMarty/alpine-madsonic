@@ -10,7 +10,7 @@ RUN echo "@commuedge https://nl.alpinelinux.org/alpine/edge/community" >> /etc/a
     ffmpeg \
     openjdk8-jre@commuedge \
     tini@commuedge \
- && wget -qO- http://madsonic.org/download/6.1/20161001_madsonic-6.1.8740-standalone.tar.gz | tar zxf - \
+ && wget -qO- http://madsonic.org/download/6.2/20161208_madsonic-6.2.9040-standalone.tar.gz | tar zxf - \
  && rm -f /var/cache/apk/*
 
 COPY start.sh /usr/local/bin/start.sh
@@ -22,6 +22,6 @@ EXPOSE 4050
 VOLUME /config /media /playlists /podcasts
 
 LABEL description "Open source media streamer" \
-      madsonic "Madsonic v6.1"
+      madsonic "Madsonic v6.2"
 
 CMD ["/sbin/tini","--","start.sh"]
