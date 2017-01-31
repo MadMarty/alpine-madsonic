@@ -2,6 +2,7 @@ FROM alpine:edge
 MAINTAINER madsonic <support@madsonic.org>
 
 ENV GID=991 UID=991
+ENV JVM_MEMORY=256
 
 WORKDIR /madsonic
 
@@ -10,7 +11,7 @@ RUN echo "@commuedge https://nl.alpinelinux.org/alpine/edge/community" >> /etc/a
     ffmpeg \
     openjdk8-jre@commuedge \
     tini@commuedge \
- && wget -qO- http://madsonic.org/download/6.2/20161208_madsonic-6.2.9040-standalone.tar.gz | tar zxf - \
+ && wget -qO- http://madsonic.org/download/6.2/20161222_madsonic-6.2.9080-standalone.tar.gz | tar zxf - \
  && rm -f /var/cache/apk/*
 
 COPY start.sh /usr/local/bin/start.sh

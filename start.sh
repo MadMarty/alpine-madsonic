@@ -12,7 +12,7 @@ chown -R madsonic:madsonic /config
 sleep 10 # avoid erros
 
 su madsonic << EOF
-java -Xmx256m \
+java -Xmx${JVM_MEMORY}m \
   -Dmadsonic.home=/config \
   -Dmadsonic.host=0.0.0.0 \
   -Dmadsonic.port=4040 \
