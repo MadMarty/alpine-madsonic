@@ -4,6 +4,13 @@ MAINTAINER madsonic <support@madsonic.org>
 ENV GID=991 UID=991
 ENV JVM_MEMORY=256
 
+# Madsonic Package Information
+ENV PKG_NAME madsonic
+ENV PKG_VER 6.3
+ENV PKG_BUILD 9500
+ENV PKG_DATE 20170602
+ENV TGZ_NAME ${PKG_DATE}_${PKG_NAME}-${PKG_VER}.${PKG_BUILD}-standalone.tar.gz
+
 WORKDIR /madsonic
 
 RUN echo "@commuedge https://nl.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories \
@@ -11,7 +18,7 @@ RUN echo "@commuedge https://nl.alpinelinux.org/alpine/edge/community" >> /etc/a
     ffmpeg \
     openjdk8-jre@commuedge \
     tini@commuedge \
- && wget -qO- http://madsonic.org/download/6.2/20170215_madsonic-6.2.9260-standalone.tar.gz | tar zxf - \
+ && wget -qO- http://madsonic.org/download/${PKG_VER}/${TGZ_NAME} | tar zxf - \
  && rm -f /var/cache/apk/*
 
 COPY start.sh /usr/local/bin/start.sh
@@ -23,6 +30,6 @@ EXPOSE 4050
 VOLUME /config /media /playlists /podcasts
 
 LABEL description "Open source media streamer" \
-      madsonic "Madsonic v6.2"
+      madsonic "Madsonic v${PKG_VER}"
 
 CMD ["/sbin/tini","--","start.sh"]
